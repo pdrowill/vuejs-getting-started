@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    .box {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .demo{
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+    .color-1 {
+        background-color: red;
+    }
+    .color-2 {
+        background-color: green;
+    }
+    .color-3 {
+        background-color: blue;
+    }
+</style>
+
+<div id="app">
+    <div class="box">
+        <div class="demo" :style="{'background-color': color1}"></div>
+        <div class="demo" :style="{'background-color': color2}"></div>
+        <div class="demo" :style="{'background-color': color3}"></div>    
+        <div class="demo" :style="myStyle"></div>    
+    </div>
+    <hr>
+    <div class="box">
+        <input type="text" v-model="color1" placeholder="color">
+        <input type="text" v-model="color2" placeholder="color">
+        <input type="text" v-model="color3" placeholder="color">
+        <input type="text" v-model="color4" placeholder="color">
+    </div>
+    <div class="box">
+        <div class="demo" :style="[myStyle, {height: 250}]"></div>    
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            color1: 'red',
+            color2: 'blue',
+            color3: 'green',
+            color4: 'gray',
+            width: 100,
+            height: 100
+        },
+        computed: {
+            myStyle() {
+                return {
+                    backgroundColor: this.color4,
+                    width: this.width + 'px',
+                    height: `${this.height}px`
+                }
+            }
+        }
+        
+    });
+</script>
+</body>
+</html>
