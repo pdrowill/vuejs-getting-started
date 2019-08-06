@@ -11,10 +11,12 @@
 
 <div id="app">
     <button v-on:click="plus">Plus</button>
-    <button v-on:click="count2++">Another Plus</button>
+    <button v-on:click="min">Min</button>
     <p>First Counter: {{ count }} </p>
+    <hr>
+    <button v-on:click="count2++">Another Plus</button>
     <p>Second Counter: {{ count2 }}</p>
-    <p>Result of first counter: {{ result }}</p>
+    <p>Result of first counter: {{ result }}<!-- this is a computed method--></p>
 </div>
 
 <script>
@@ -26,9 +28,9 @@
         },
         computed: {
             result() {
-                console.log('metodo computed chamado...');
+                console.log('computed method...');
                 return this.count >= 5?
-                    'Maior ou igual a 5' : 'Menor que 5'
+                    'More or equal to 5' : 'Less than 5'
             }
         },
         methods: {
@@ -38,6 +40,10 @@
             min() {
                 this.count--
             },
+            result() {
+                this.count >= 5?
+                    'More or equal to 5' : 'Less than 5'
+            }
         }
     });
 </script>
