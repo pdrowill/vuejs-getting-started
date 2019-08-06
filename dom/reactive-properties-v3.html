@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <button v-on:click="plus">Plus</button>
+    <button v-on:click="min">Min</button>
+    <p>First Counter: {{ count }} </p>
+    <hr>
+    <button v-on:click="count2++">Another Plus</button>
+    <p>Second Counter: {{ count2 }}</p>
+    <p>Result of first counter: {{ result }}<!-- this is a computed method--></p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            count: 0,
+            count2: 0
+        },
+        computed: {
+            result() {
+                console.log('computed method...');
+                return this.count >= 5?
+                    'More or equal to 5' : 'Less than 5'
+            }
+        },
+        watch: {
+            count(novo, antigo) {
+                //console.log(novo, antigo)
+                setTimeout(() => {
+                    this.count = 0
+                }, 2000)
+            }
+        },
+
+        methods: {
+            plus() {
+                this.count++
+            },
+            min() {
+                this.count--
+            },
+            //result() {
+            //  this.count >= 5?
+            //  'More or equal to 5' : 'Less than 5'
+            //}
+        }
+    });
+</script>
+</body>
+</html>
