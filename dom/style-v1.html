@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <div class="demo" :class="{'color-1': applyColor1}" @click="applyColor1 = !applyColor1"></div>
+    <div class="demo" :class="{'color-2': applyColor2}" @click="applyColor2 = !applyColor2"></div>
+    <div class="demo"  :class="{'color-3': applyColor3}" @click="applyColor3 = !applyColor3"></div>
+</div>
+<style>
+    #app {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .demo{
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+    .color-1 {
+        background-color: red;
+    }
+    .color-2 {
+        background-color: green;
+    }
+    .color-3 {
+        background-color: blue;
+    }
+    </style>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            applyColor1: false,
+            applyColor2: false,
+            applyColor3: false
+        }
+        
+    });
+</script>
+</body>
+</html>
